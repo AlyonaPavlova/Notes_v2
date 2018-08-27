@@ -11,7 +11,7 @@
  * can be previewed at /keystone/test-email/{key}
  */
 
-var keystone = require('keystone');
+const keystone = require('keystone');
 
 module.exports = {
 
@@ -20,9 +20,9 @@ module.exports = {
 		// To test enquiry notifications we create a dummy enquiry that
 		// is not saved to the database, but passed to the template.
 
-		var Enquiry = keystone.list('Enquiry');
+		const Enquiry = keystone.list('Enquiry');
 
-		var newEnquiry = new Enquiry.model({
+		const newEnquiry = new Enquiry.model({
 			name: { first: 'Test', last: 'User' },
 			email: 'contact@notes_v2.com',
 			phone: '+61 2 1234 5678',

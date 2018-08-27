@@ -1,12 +1,12 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+const keystone = require('keystone');
+const Types = keystone.Field.Types;
 
 /**
  * Enquiry Model
  * =============
  */
 
-var Enquiry = new keystone.List('Enquiry', {
+const Enquiry = new keystone.List('Enquiry', {
 	nocreate: true,
 	noedit: true,
 });
@@ -49,8 +49,8 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 		return callback(new Error('could not find mailgun credentials'));
 	}
 
-	var enquiry = this;
-	var brand = keystone.get('brand');
+	const enquiry = this;
+	const brand = keystone.get('brand');
 
 	keystone.list('User').model.find().where('isAdmin', true).exec(function (err, admins) {
 		if (err) return callback(err);
