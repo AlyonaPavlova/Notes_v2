@@ -10,6 +10,7 @@ const keystone = require('keystone');
 // and documentation.
 
 keystone.init({
+	'cookie secret': 'secure string goes here',
 	'name': 'Notes_v2',
 	'brand': 'Notes_v2',
 
@@ -46,9 +47,9 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	posts: ['posts', 'post-categories'],
-	galleries: 'galleries',
-	enquiries: 'enquiries',
+	notes: 'notes',
+	// news: 'news',
+	// features: 'features',
 	users: 'users',
 });
 

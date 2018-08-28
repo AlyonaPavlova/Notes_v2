@@ -12,10 +12,10 @@ User.add({
 	email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
 	password: { type: Types.Password, initial: true, required: true },
 	phone: { type: String, width: 'short' },
-	regDate: { type: Types.Date, initial: true, required: true },
+	regDate: { type: Types.Date },
 	birthDate: { type: Types.Date, initial: true },
 	photo: { type: Types.CloudinaryImage, collapse: true },
-	notesCount: { type: Types.Number, initial: true, required: true },
+	notesCount: { type: Types.Number },
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 });
