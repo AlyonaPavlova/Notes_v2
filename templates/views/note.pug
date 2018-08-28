@@ -1,0 +1,29 @@
+extends ../layouts/default
+
+block content
+	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+		article
+			p: a(href='/notes') &larr; back to the notes
+			hr
+			if !data.note
+				h2 Invalid Note.
+			else
+				header
+					h1= data.note.title
+					h5 Note 
+						if data.note.publishedDate
+							| on #{data.note._.publishedDate.format('MMMM Do, YYYY')} 
+						if data.note.categories && data.note.categories.length
+							| in 
+							each cat, cat_i in data.note.categories
+								a(href='/blog/' + cat.key)= cat.name
+								if cat_i < data.note.categories.length - 1
+									| , 
+								else
+									|  
+						if data.note.author
+							| by #{data.note.author.name.first}
+				.note
+					if data.note.image.exists
+						.image-wrap: img(src=data.post._.image.fit(750,450)).img-responsive
+					!= data.note.content.full

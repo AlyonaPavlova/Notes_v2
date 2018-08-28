@@ -6,41 +6,41 @@ exports = module.exports = function (req, res) {
 	const locals = res.locals;
 
 	// Set locals
-	locals.section = 'blog';
+	locals.section = 'note';
 	locals.filters = {
-		post: req.params.post,
+		note: req.params.note,
 	};
 	locals.data = {
-		posts: [],
+		note: [],
 	};
 
-	// Load the current post
+	// Load the current note
 	view.on('init', function (next) {
 
-		const q = keystone.list('Post').model.findOne({
+		const q = keystone.list('Note').model.findOne({
 			state: 'published',
-			slug: locals.filters.post,
+			slug: locals.filters.note,
 		}).populate('author categories');
 
 		q.exec(function (err, result) {
-			locals.data.post = result;
+			locals.data.note = result;
 			next(err);
 		});
 
 	});
 
-	// Load other posts
+	// Load other notes
 	view.on('init', function (next) {
 
-		const q = keystone.list('Post').model.find().where('state', 'published').sort('-publishedDate').populate('author').limit('4');
+		const q = keystone.list('Note').model.find().where('state', 'published').sort('-publishedDate').populate('author').limit('10');
 
 		q.exec(function (err, results) {
-			locals.data.posts = results;
+			locals.data.notes = results;
 			next(err);
 		});
 
 	});
 
 	// Render the view
-	view.render('post');
+	view.render('note');
 };

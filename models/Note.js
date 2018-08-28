@@ -12,12 +12,10 @@ const Note = new keystone.List('Note', {
 
 Note.add({
 	title: { type: String, required: true },
-	description: { type: String, initial: true, required: true },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
-	authorID: { type: Types.Relationship, ref: 'User', index: true },
+	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
-	tagsCount: { type: Types.Number, initial: true, required: true },
-	image: { type: Types.CloudinaryImage },
+	tagsCount: { type: Types.Number },
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },
@@ -29,5 +27,6 @@ Note.schema.virtual('content.full').get(function () {
 	return this.content.extended || this.content.brief;
 });
 
-Note.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
+Note.track = true;
+Note.defaultColumns = 'title, description, state|20%, author|20%, publishedDate|20%';
 Note.register();
