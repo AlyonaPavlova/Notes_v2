@@ -7,6 +7,7 @@
     "dotenv": "^6.0.0",
     "keystone": "4.0.0-beta.5",
     "keystone-email": "^1.1.0",
+    "keystone-enreg": "git+https://git@github.com/enraiser/keystone-enreg.git",
     "lodash": "^4.13.1",
     "mongoose": "^5.2.10",
     "node-sass": "^4.9.3",

@@ -57,11 +57,11 @@ html
 						ul.nav.navbar-nav.navbar-right
 							if user
 								if user.canAccessKeystone
-									li: a(href='/keystone') Open Keystone
+									li: a(href='/keystone') Open Profile
 								li: a(href='/keystone/signout') Sign Out
 							else
 								li: a(href='/keystone/signin') Sign In
-								li: a(href='/keystone/register') Sign Up
+								li: a(href='/signup') Sign Up
 
 		//- BODY
 		#body
@@ -98,6 +98,7 @@ html
 		//- Customise which Bootstrap javascript files are served by including
 		//- them specifically here, instead of bootstrap-3.3.5.min.js
 		script(src='/js/bootstrap/bootstrap-3.3.5.min.js')
+		script(src='/js/inputmask.min.js')
 
 		//- The KeystoneJS Content Editor provides support for ks-editable data attributes,
 		//- which generate links to edit content for users who can access Keystone
