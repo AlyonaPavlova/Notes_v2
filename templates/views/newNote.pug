@@ -1,0 +1,22 @@
+extends ../layouts/default
+
+block intro
+	.container
+		h1= 'New Note'
+
+block content
+	.container
+			form.contact-form(method="post").row.col-sm-8.col-md-6
+				input(type='hidden', name='action', value='note.create')
+
+				.form-group
+					label Title
+					input.form-control.input-box(type='email', required, name='email', value=formData.title, placeholder='Title')
+				.form-group
+					label Description
+					input.form-control.input-box(type='email', required, name='email', value=formData.content, placeholder='Description')
+				.form-group
+					label Tags
+					input.form-control.input-box(type='email', required, name='email', value=formData.tags, placeholder='tag1, tag2, tag3')
+
+				button(type='submit').btn.btn-success.btn-lg Create

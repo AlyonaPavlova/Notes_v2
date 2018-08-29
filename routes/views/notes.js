@@ -9,29 +9,29 @@ exports = module.exports = function (req, res) {
 	// Init locals
 	locals.section = 'notes';
 	locals.filters = {
-		category: req.params.category,
+		category: req.params.tag,
 	};
 	locals.data = {
 		notes: [],
-		categories: [],
+		tags: [],
 	};
 
 	// Load all categories
 	view.on('init', function (next) {
 
-		keystone.list('PostCategory').model.find().sort('name').exec(function (err, results) {
+		keystone.list('Tag').model.find().sort('name').exec(function (err, results) {
 
 			if (err || !results.length) {
 				return next(err);
 			}
 
-			locals.data.categories = results;
+			locals.data.tags = results;
 
 			// Load the counts for each category
-			async.each(locals.data.categories, function (category, next) {
+			async.each(locals.data.tags, function (tag, next) {
 
-				keystone.list('Note').model.count().where('categories').in([category.id]).exec(function (err, count) {
-					category.noteCount = count;
+				keystone.list('Note').model.count().where('tags').in([tag.id]).exec(function (err, count) {
+					tag.noteCount = count;
 					next(err);
 				});
 
@@ -44,9 +44,9 @@ exports = module.exports = function (req, res) {
 	// Load the current category filter
 	view.on('init', function (next) {
 
-		if (req.params.category) {
-			keystone.list('PostCategory').model.findOne({ key: locals.filters.category }).exec(function (err, result) {
-				locals.data.category = result;
+		if (req.params.tag) {
+			keystone.list('Tag').model.findOne({ key: locals.filters.tag }).exec(function (err, result) {
+				locals.data.tag = result;
 				next(err);
 			});
 		} else {
@@ -66,10 +66,10 @@ exports = module.exports = function (req, res) {
 			},
 		})
 			.sort('-publishedDate')
-			.populate('author categories');
+			.populate('author tags');
 
-		if (locals.data.category) {
-			q.where('categories').in([locals.data.category]);
+		if (locals.data.tag) {
+			q.where('tags').in([locals.data.tag]);
 		}
 
 		q.exec(function (err, results) {
