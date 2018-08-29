@@ -1,6 +1,6 @@
 extends ../layouts/default
 
-mixin notes(note)
+mixin note(note)
 	.note(data-ks-editable=editable(user, { list: 'Note', id: note.id }))
 		h2: a(href='/notes/note/' + note.slug)= note.title
 		p.lead.text-muted Posted 
@@ -15,7 +15,8 @@ mixin notes(note)
 					else
 						|  
 			if note.author
-				| by #{note.author.name}
+				| by #{note.author.name.first}
+		p!= note.content.brief		
 		if note.content.extended
 			p.read-more: a(href='/notes/note/' + note.slug) Read more...
 
@@ -29,7 +30,7 @@ block content
 			if filters.category && !data.category
 				h3.text-muted Invalid Category.
 			else
-				if data.notes
+				if data.notes.results.length
 					if data.notes.totalPages > 1
 						h4.text-weight-normal Showing 
 							strong #{data.notes.first}
@@ -39,10 +40,10 @@ block content
 							strong #{data.notes.total}
 							|  notes.
 					else
-						h4.text-weight-normal Showing #{utils.plural(data.notes, '* note')}.
+						h4.text-weight-normal Showing #{utils.plural(data.notes.results.length, '* note')}.
 					.blog
-						each note in data.notes
-							+notes(note)
+						each note in data.notes.results
+							+note(note)
 					
 					if data.notes.totalPages > 1
 						ul.pagination
@@ -53,7 +54,7 @@ block content
 							each p, i in data.notes.pages
 								li(class=data.notes.currentPage == p ? 'active' : null)
 									a(href='?page=' + (p == '...' ? (i ? data.notes.totalPages : 1) : p ))= p
-							if data.posts.next
+							if data.notes.next
 								li: a(href='?page=' + data.notes.next): span.glyphicon.glyphicon-chevron-right
 							else
 								li.disabled: a(href='?page=' + data.notes.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
@@ -66,7 +67,7 @@ block content
 		if data.categories
 			.col-sm-4.col-md-3
 				h2 Categories
-				.list-group(style='margin-top: 70px;')
-					a(href='#', class=!data.category ? 'active' : false).list-group-item All Categories
+				.list-group(style='margin-top: 30px;')
+					a(href='/notes', class=!data.category ? 'active' : false).list-group-item All Categories
 					each cat in data.categories
-						a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
+						a(href='/notes/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name

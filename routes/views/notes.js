@@ -1,8 +1,6 @@
 const keystone = require('keystone');
 const async = require('async');
 
-const Note = keystone.list('Note');
-
 exports = module.exports = function (req, res) {
 
 	const view = new keystone.View(req, res);
@@ -14,15 +12,7 @@ exports = module.exports = function (req, res) {
 		category: req.params.category,
 	};
 	locals.data = {
-		notes: Note.model.find()
-			.sort('-publishedAt')
-			.limit(10)
-			.exec()
-			.then(function (notes) {
-				return notes;
-			}, function (err) {
-				console.log(err);
-			}),
+		notes: [],
 		categories: [],
 	};
 
@@ -71,9 +61,9 @@ exports = module.exports = function (req, res) {
 			page: req.query.page || 1,
 			perPage: 10,
 			maxPages: 10,
-			// filters: {
-			// 	state: 'published',
-			// },
+			filters: {
+				state: 'published',
+			},
 		})
 			.sort('-publishedDate')
 			.populate('author categories');
@@ -83,7 +73,7 @@ exports = module.exports = function (req, res) {
 		}
 
 		q.exec(function (err, results) {
-			locals.data.posts = results;
+			locals.data.notes = results;
 			next(err);
 		});
 	});
