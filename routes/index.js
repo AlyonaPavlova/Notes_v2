@@ -36,9 +36,11 @@ exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
 	app.get('/notes/:category?', routes.views.notes);
+	app.get('/notes/new', routes.views.newNote);
 	app.get('/notes/note/:note', routes.views.note);
 	app.get('/news', routes.views.news);
 	app.get('/features', routes.views.features);
+	// app.get('/profile', routes.views.profile);
 	app.get('/signup', routes.views.signup);
 	app.post('/signup', routes.views.signup);
 

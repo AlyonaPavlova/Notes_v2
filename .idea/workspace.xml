@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e678c56e-6ad9-45ee-8bab-275257dbce48" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layouts/default.pug" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layouts/default.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/views/notes.pug" beforeDir="false" afterPath="$PROJECT_DIR$/templates/views/notes.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/views/signup.pug" beforeDir="false" afterPath="$PROJECT_DIR$/templates/views/signup.pug" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,18 +18,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4778443">
+    <splitter split-orientation="horizontal" split-proportion="0.5227135">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="note.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/routes/views/note.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="494">
-                  <caret line="43" column="22" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="notes.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/routes/views/notes.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -43,17 +33,31 @@
           <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/routes/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="326">
-                  <caret line="41" column="44" lean-forward="true" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+                <state relative-caret-position="255">
+                  <caret line="38" column="48" lean-forward="true" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="signup.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="newNote.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/routes/views/newNote.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="230">
+                  <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="newNote.pug" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/views/newNote.pug">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file leaf-file-name="signup.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/routes/views/signup.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="116">
-                  <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+                <state relative-caret-position="276">
+                  <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
                 </state>
               </provider>
             </entry>
@@ -61,8 +65,8 @@
           <file leaf-file-name="keystone.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/keystone.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-220">
-                  <caret line="22" column="34" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="34" />
+                <state relative-caret-position="499">
+                  <caret line="52" column="3" selection-start-line="52" selection-start-column="3" selection-end-line="52" selection-end-column="3" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -82,17 +86,8 @@
           <file leaf-file-name="signup.pug" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/templates/views/signup.pug">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="498">
-                  <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="inputmask.min.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public/js/inputmask.min.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="23">
-                  <caret line="1" column="5446" selection-start-line="1" selection-start-column="5446" selection-end-line="1" selection-end-column="5446" />
+                <state relative-caret-position="530">
+                  <caret line="40" column="68" lean-forward="true" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
                 </state>
               </provider>
             </entry>
@@ -101,20 +96,20 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="notes.pug" pinned="false" current-in-tab="false">
+          <file leaf-file-name="notes.pug" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/views/notes.pug">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="253">
-                  <caret line="11" column="57" lean-forward="true" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+                <state relative-caret-position="276">
+                  <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="signin.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/server/templates/signin.html">
+          <file leaf-file-name="bindSessionMiddleware.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/node_modules/keystone/server/bindSessionMiddleware.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="230">
-                  <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+                <state relative-caret-position="253">
+                  <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
                 </state>
               </provider>
             </entry>
@@ -137,11 +132,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="User.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="User.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/models/User.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="131">
-                  <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+                <state relative-caret-position="303">
+                  <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
                 </state>
               </provider>
             </entry>
@@ -178,6 +173,7 @@
       <find>moment</find>
       <find>static-eval</find>
       <find>superagent</find>
+      <find>already</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -202,22 +198,24 @@
         <option value="$PROJECT_DIR$/routes/views/news.js" />
         <option value="$PROJECT_DIR$/package-lock.json" />
         <option value="$PROJECT_DIR$/models/Enquiry.js" />
-        <option value="$PROJECT_DIR$/keystone.js" />
         <option value="$PROJECT_DIR$/models/User.js" />
         <option value="$PROJECT_DIR$/routes/views/note.js" />
         <option value="$PROJECT_DIR$/models/Note.js" />
         <option value="$PROJECT_DIR$/models/PostCategory.js" />
         <option value="$PROJECT_DIR$/routes/views/notes.js" />
         <option value="$PROJECT_DIR$/templates/views/note.pug" />
-        <option value="$PROJECT_DIR$/templates/views/notes.pug" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/routes/middleware.js" />
         <option value="$PROJECT_DIR$/public/js/inputmask.min.js" />
         <option value="$PROJECT_DIR$/templates/layouts/default.pug" />
-        <option value="$PROJECT_DIR$/templates/views/signup.pug" />
         <option value="$PROJECT_DIR$/routes/views/getsignup.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/routes/views/signup.js" />
+        <option value="$PROJECT_DIR$/routes/views/profile.js" />
+        <option value="$PROJECT_DIR$/keystone.js" />
+        <option value="$PROJECT_DIR$/templates/views/signup.pug" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/templates/views/notes.pug" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/views/newNote.js" />
       </list>
     </option>
   </component>
@@ -268,6 +266,79 @@
               <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
               <item name="Notes_v2" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Notes_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Notes_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="keystone" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Notes_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="keystone" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Notes_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="keystone" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Notes_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="keystone" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Notes_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="keystone" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+              <item name="emails" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Notes_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="keystone" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+              <item name="emails" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Notes_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="keystone" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+              <item name="emails" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Notes_v2" type="462c0819:PsiDirectoryNode" />
+              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
+              <item name="keystone" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+              <item name="emails" type="462c0819:PsiDirectoryNode" />
+              <item name="mixins" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Notes_v2" type="b2602c69:ProjectViewProjectNode" />
@@ -326,7 +397,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/keystone/admin/server/templates/signin.html&#10;signin.&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/keystone/admin/server/templates/signin.html&#10;/register&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/keystone/lib/list/register.js&#10;/signin&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/keystone/admin/server/templates/signin.html&#10;register&#9;null&#9;null&#10;regi&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/pug/register.js&#10;signin&#9;null&#9;null&#10;mongoose&#9;null&#9;null&#10;mongo&#9;null&#9;null&#10;server.js&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/keystone/fields/explorer/server.js" />
+    <property name="SearchEverywhereHistoryKey" value="signin&#9;null&#9;null&#10;signin.&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/keystone/admin/server/templates/signin.html&#10;/register&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/keystone/lib/list/register.js&#10;/signin&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/keystone/admin/server/templates/signin.html&#10;register&#9;null&#9;null&#10;regi&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/pug/register.js&#10;mongoose&#9;null&#9;null&#10;mongo&#9;null&#9;null&#10;server.js&#9;FILE&#9;file:///Users/lodoss/WebstormProjects/Notes_v2/node_modules/keystone/fields/explorer/server.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.5.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -362,15 +433,16 @@
       <updated>1535375104302</updated>
       <workItem from="1535375109368" duration="3374000" />
       <workItem from="1535438296680" duration="18299000" />
-      <workItem from="1535524577443" duration="19061000" />
+      <workItem from="1535524577443" duration="23498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40734000" />
+    <option name="totallyTimeSpent" value="45171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1919" height="1057" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info id="DB Browser" order="2" />
@@ -379,8 +451,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.21820062" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.28645295" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12975508" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.28645295" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13965607" />
       <window_info id="Project Explorer" order="2" />
       <window_info id="Job Explorer" order="2" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -404,133 +476,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/Note.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/keystone/fields/explorer/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/keystone.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="36" column="37" lean-forward="true" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/middleware.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="24" column="63" lean-forward="true" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/User.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" column="3" lean-forward="true" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/views/errors/404.pug">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.editorconfig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/keystone/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-181">
-          <caret line="149" column="18" lean-forward="true" selection-start-line="149" selection-start-column="18" selection-end-line="149" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/keystone/fields/explorer/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-164">
-          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/News.js" />
-    <entry file="file://$PROJECT_DIR$/templates/views/index.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/views/news.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/views/features.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/views/features.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="2726" column="9" lean-forward="true" selection-start-line="2726" selection-start-column="9" selection-end-line="2726" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/mongoose/tools/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/mongoose/examples/express/connection-sharing/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/keystone/fields/explorer/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-94" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/keystone/lib/core/openDatabaseConnection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -590,54 +535,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/keystone-enreg/templates/views/signup.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
           <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/views/news.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/client/Signin/components/LoginForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/client/Signin/Signin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="18" column="25" lean-forward="true" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/views/notes.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="57" lean-forward="true" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/server/templates/signin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -669,34 +570,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layouts/default.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="62" column="60" selection-start-line="62" selection-start-column="45" selection-end-line="62" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/middleware.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
           <caret line="28" column="2" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/views/signup.pug">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/keystone.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-220">
-          <caret line="22" column="34" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -714,20 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/views/notes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="65" column="14" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/User.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/views/getsignup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -735,17 +598,214 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
+    <entry file="file://$PROJECT_DIR$/models/User.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="41" column="44" lean-forward="true" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+        <state relative-caret-position="303">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/views/profile.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/server/api/session/signin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-390">
+          <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/client/Signin/components/test/LoginForm.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/client/Signin/components/LoginForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-309">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/client/Signin/components/UserInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-364">
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/client/Signin/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/client/App/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-134">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/server/routes/signin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="50" lean-forward="true" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/server/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/client/Signin/Signin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2472">
+          <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+          <folding>
+            <element signature="e#57#92#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/server/templates/signin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/server/bindStaticMiddleware.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2399" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/server/bindSessionMiddleware.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/layouts/default.pug">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/keystone.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="52" column="3" selection-start-line="52" selection-start-column="3" selection-end-line="52" selection-end-column="3" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/views/signup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+        <state relative-caret-position="276">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/views/notes.pug">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/views/signup.pug">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="40" column="68" lean-forward="true" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="38" column="48" lean-forward="true" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/views/news.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="13" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/views/notes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="65" column="14" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/views/newNote.pug">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/public/styles/keystone/forms.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-91" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/admin/server/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/fields/explorer/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-410" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/templates/helpers/emails/mixins/button.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/templates/helpers/emails/layouts/default.jade">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/templates/helpers/emails/layouts/styles/ink.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1150" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/keystone/templates/helpers/emails/layouts/styles/default.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1997" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/views/newNote.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>

@@ -22,7 +22,11 @@ mixin note(note)
 
 block intro
 	.container
-		h1= data.category ? data.category.name : 'Notes'
+		.row
+			.col-md-10
+				h1= data.category ? data.category.name : 'Notes'
+			.col-md-2
+				button(href='' type='button' style='margin-top: 20px').btn.btn-success.btn-lg Create Note
 
 block content
 	.container: .row
@@ -66,8 +70,8 @@ block content
 		
 		if data.categories
 			.col-sm-4.col-md-3
-				h2 Categories
-				.list-group(style='margin-top: 30px;')
+				h2.text-right Categories
+				.text-right.list-group(style='margin-top: 30px;')
 					a(href='/notes', class=!data.category ? 'active' : false).list-group-item All Categories
 					each cat in data.categories
 						a(href='/notes/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
