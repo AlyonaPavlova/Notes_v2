@@ -12,7 +12,7 @@ const Note = new keystone.List('Note', {
 
 Note.add({
 	title: { type: String, required: true },
-	description: { type: String, required: true },
+	description: { type: String, initial: true, required: true },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	authorID: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
