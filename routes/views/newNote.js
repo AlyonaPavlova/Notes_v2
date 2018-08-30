@@ -25,9 +25,15 @@ exports = module.exports = function (req, res) {
 
 				allTagsArr.push(newTag);
 
-				newTag.save(function (err) {
-					if (err) {
-						return console.log(err);
+				let tag = Tag.findOne({ name: arrTags[i] });
+				tag.exec(function (err, tag) {
+					if (err) return err;
+					if (!tag) {
+						newTag.save(function (err) {
+							if (err) {
+								return console.log(err);
+							}
+						});
 					}
 				});
 			}
