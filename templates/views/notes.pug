@@ -26,7 +26,7 @@ block intro
 			.col-md-10
 				h1= data.category ? data.category.name : 'Notes'
 			.col-md-2
-				button(href='' type='button' style='margin-top: 20px').btn.btn-success.btn-lg Create Note
+				input(type='button' value='Create Note' onclick="window.location='/new-note';").btn.btn-success.btn-lg 
 
 block content
 	.container: .row

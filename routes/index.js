@@ -35,8 +35,9 @@ const routes = {
 exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/notes/:category?', routes.views.notes);
-	app.get('/notes/new', routes.views.newNote);
+	app.get('/notes', routes.views.notes);
+	app.get('/new-note', routes.views.newNote);
+	app.post('/new-note', routes.views.newNote);
 	app.get('/notes/note/:note', routes.views.note);
 	app.get('/news', routes.views.news);
 	app.get('/features', routes.views.features);
