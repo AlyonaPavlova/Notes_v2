@@ -1,8 +1,9 @@
 const keystone = require('keystone');
+
 const Note = keystone.list('Note').model;
 const Tag = keystone.list('Tag').model;
 
-exports = module.exports = function (req, res) {
+module.exports = function (req, res) {
 
 	const view = new keystone.View(req, res);
 	const locals = res.locals;
