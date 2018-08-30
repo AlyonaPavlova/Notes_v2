@@ -7,7 +7,7 @@ exports = module.exports = function (req, res) {
 	const locals = res.locals;
 
 	// Init locals
-	locals.section = 'blog';
+	locals.section = 'notes';
 	locals.filters = {
 		category: req.params.category,
 	};
@@ -31,7 +31,7 @@ exports = module.exports = function (req, res) {
 			async.each(locals.data.categories, function (category, next) {
 
 				keystone.list('Note').model.count().where('categories').in([category.id]).exec(function (err, count) {
-					category.postCount = count;
+					category.noteCount = count;
 					next(err);
 				});
 
@@ -54,10 +54,10 @@ exports = module.exports = function (req, res) {
 		}
 	});
 
-	// Load the posts
+	// Load the notes
 	view.on('init', function (next) {
 
-		var q = keystone.list('Note').paginate({
+		let q = keystone.list('Note').paginate({
 			page: req.query.page || 1,
 			perPage: 10,
 			maxPages: 10,
@@ -73,11 +73,11 @@ exports = module.exports = function (req, res) {
 		}
 
 		q.exec(function (err, results) {
-			locals.data.posts = results;
+			locals.data.notes = results;
 			next(err);
 		});
 	});
 
 	// Render the view
-	view.render('blog');
+	view.render('notes');
 };

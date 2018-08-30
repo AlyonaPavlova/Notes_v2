@@ -35,10 +35,10 @@ const routes = {
 exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/blog/:category?', routes.views.blog);
-	app.get('/blog/post/:post', routes.views.post);
+	app.get('/notes/:category?', routes.views.notes);
+	app.get('/notes/note/:note', routes.views.note);
 	app.get('/news', routes.views.news);
-	app.all('/features', routes.views.features);
+	app.get('/features', routes.views.features);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
