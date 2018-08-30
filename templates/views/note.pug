@@ -13,11 +13,11 @@ block content
 					h5 Posted 
 						if data.note.publishedDate
 							| on #{data.note._.publishedDate.format('MMMM Do, YYYY')} 
-						if data.note.categories && data.note.categories.length
+						if data.note.tags && data.note.tags.length
 							| in 
-							each cat, cat_i in data.note.categories
+							each cat, cat_i in data.note.tags
 								a(href='/notes/' + cat.key)= cat.name
-								if cat_i < data.note.categories.length - 1
+								if cat_i < data.note.tags.length - 1
 									| , 
 								else
 									|  

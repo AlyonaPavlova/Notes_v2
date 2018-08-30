@@ -2,15 +2,15 @@ extends ../layouts/default
 
 mixin note(note)
 	.note(data-ks-editable=editable(user, { list: 'Note', id: note.id }))
-		h2: a(href='/notes/note/' + note.slug)= note.title
+		h2: a(href='/notes/' + note.slug)= note.title
 		p.lead.text-muted Posted 
 			if note.publishedDate
 				| on #{note._.publishedDate.format('MMMM Do, YYYY')} 
-			if note.categories && note.categories.length
+			if note.tags && note.tags.length
 				| in 
-				each cat, i in note.categories
+				each cat, i in note.tags
 					a(href='/notes/' + cat.key)= cat.name
-					if i < note.categories.length - 1
+					if i < note.tags.length - 1
 						| , 
 					else
 						|  
@@ -18,21 +18,21 @@ mixin note(note)
 				| by #{note.author.name.first}
 		p!= note.content.brief		
 		if note.content.extended
-			p.read-more: a(href='/notes/note/' + note.slug) Read more...
+			p.read-more: a(href='/notes/' + note.slug) Read more...
 
 block intro
 	.container
 		.row
-			.col-md-10
-				h1= data.category ? data.category.name : 'Notes'
+			.col-sm-9.col-md-10
+				h1= data.tag ? data.tag.name : 'Notes'
 			.col-md-2
-				input(type='button' value='Create Note' onclick="window.location='/new-note';").btn.btn-success.btn-lg 
+				input(type='button' value='Create Note' onclick="window.location='/new-note';").btn.btn-success.btn-lg.pull-right
 
 block content
 	.container: .row
 		.col-sm-8.col-md-9
-			if filters.category && !data.category
-				h3.text-muted Invalid Category.
+			if filters.tag && !data.tag
+				h3.text-muted Invalid tag.
 			else
 				if data.notes.results.length
 					if data.notes.totalPages > 1
@@ -63,15 +63,15 @@ block content
 							else
 								li.disabled: a(href='?page=' + data.notes.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
 				else
-					if data.category
-						h3.text-muted There are no posts in the category #{data.category.name}.
+					if data.tag
+						h3.text-muted There are no posts in the tag #{data.tag.name}.
 					else
 						h3.text-muted There are no notes yet.
 		
-		if data.categories
+		if data.tags
 			.col-sm-4.col-md-3
-				h2.text-right Categories
+				h2.text-right Tags
 				.text-right.list-group(style='margin-top: 30px;')
-					a(href='/notes', class=!data.category ? 'active' : false).list-group-item All Categories
-					each cat in data.categories
-						a(href='/notes/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
+					a(href='/notes', class=!data.tag ? 'active' : false).list-group-item All tags
+					each cat in data.tags
+						a(href='/notes/' + cat.key, class=data.tag && data.tag.id === cat.id ? 'active' : false).list-group-item= cat.name

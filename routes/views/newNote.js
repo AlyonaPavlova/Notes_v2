@@ -12,58 +12,38 @@ module.exports = function (req, res) {
 	locals.formData = req.body || {};
 	locals.section = 'newNote';
 
-	view.on('post', { action: 'note.create' }, function () {
-		const allTagsArr = [];
-
+	view.on('post', { action: 'note.create' }, () => {
+		const tagsArr = [];
+		
 		if (locals.formData.tags) {
-			const tags = locals.formData.tags;
-			const arrTags = tags.split(', ');
+			const tagsNamesArr = locals.formData.tags.split(', ');
 
-			for (let i = 0; i < arrTags.length; i++) {
-				let newTag = new Tag({
-					name: arrTags[i],
-				});
+			for (let i = 0; i < tagsNamesArr.length; i++) {
+				let newTag = new Tag({ name: tagsNamesArr[i] });
 
-				allTagsArr.push(newTag);
+				tagsArr.push(newTag);
 
-				let tag = Tag.findOne({ name: arrTags[i] });
-				tag.exec(function (err, tag) {
+				Tag.findOne({ name: tagsNamesArr[i] }).exec((err, tag) => {
 					if (err) return err;
-					if (!tag) {
-						newTag.save(function (err) {
-							if (err) {
-								return console.log(err);
-							}
-						});
-					}
+					if (!tag) { newTag.save().catch(err => console.log(err)); }
 				});
 			}
 		}
 
 		const newNote = new Note({
 			title: locals.formData.title,
-			state: 'published',
 			author: req.user,
 			publishedDate: new Date(),
 			content: {
 				brief: locals.formData.brief,
 				extended: locals.formData.extended,
 			},
-			tags: allTagsArr,
-			tagsCount: allTagsArr.length,
+			tags: tagsArr,
+			tagsCount: tagsArr.length,
 		});
 
-		newNote.save(function (err) {
-			if (err) {
-				return console.log(err);
-			} else {
-				console.log(newNote);
-				return res.redirect('/notes');
-			}
-		});
+		newNote.save().then(() => res.redirect('/notes')).catch(err => console.log(err));
 	});
-
-	// Render the view
+	
 	view.render('newNote');
-
 };

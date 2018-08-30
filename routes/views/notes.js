@@ -1,7 +1,7 @@
 const keystone = require('keystone');
 const async = require('async');
 
-exports = module.exports = function (req, res) {
+module.exports = function (req, res) {
 
 	const view = new keystone.View(req, res);
 	const locals = res.locals;
@@ -16,7 +16,7 @@ exports = module.exports = function (req, res) {
 		tags: [],
 	};
 
-	// Load all categories
+	// Load all tags
 	view.on('init', function (next) {
 
 		keystone.list('Tag').model.find().sort('name').exec(function (err, results) {
@@ -27,7 +27,7 @@ exports = module.exports = function (req, res) {
 
 			locals.data.tags = results;
 
-			// Load the counts for each category
+			// Load the counts for each tag
 			async.each(locals.data.tags, function (tag, next) {
 
 				keystone.list('Note').model.count().where('tags').in([tag.id]).exec(function (err, count) {
@@ -41,7 +41,7 @@ exports = module.exports = function (req, res) {
 		});
 	});
 
-	// Load the current category filter
+	// Load the current tag filter
 	view.on('init', function (next) {
 
 		if (req.params.tag) {
@@ -78,6 +78,5 @@ exports = module.exports = function (req, res) {
 		});
 	});
 
-	// Render the view
 	view.render('notes');
 };

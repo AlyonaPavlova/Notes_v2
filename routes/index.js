@@ -32,18 +32,19 @@ const routes = {
 };
 
 // Setup Route Bindings
-exports = module.exports = function (app) {
+module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
-	app.get('/notes', routes.views.notes);
+	app.get('/signup', routes.views.signup);
+	app.get('/notes/:tag?', routes.views.notes);
+	app.get('/notes/:note', routes.views.note);
 	app.get('/new-note', routes.views.newNote);
-	app.post('/new-note', routes.views.newNote);
-	app.get('/notes/note/:note', routes.views.note);
 	app.get('/news', routes.views.news);
 	app.get('/features', routes.views.features);
-	// app.get('/profile', routes.views.profile);
-	app.get('/signup', routes.views.signup);
+	
 	app.post('/signup', routes.views.signup);
+	app.post('/new-note', routes.views.newNote);
+	
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
