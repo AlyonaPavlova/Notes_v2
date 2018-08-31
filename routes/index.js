@@ -22,6 +22,8 @@ const keystone = require('keystone');
 const middleware = require('./middleware');
 const importRoutes = keystone.importer(__dirname);
 
+const Note = keystone.list('Note').model;
+
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
@@ -33,20 +35,22 @@ const routes = {
 
 // Setup Route Bindings
 module.exports = function (app) {
-	// Views
 	app.get('/', routes.views.index);
-	app.get('/signup', routes.views.signup);
-	app.get('/notes/:tag?', routes.views.notes);
-	app.get('/:note', routes.views.note);
-	app.get('/new-note', routes.views.newNote);
 	app.get('/news', routes.views.news);
 	app.get('/features', routes.views.features);
 	
-	app.post('/signup', routes.views.signup);
-	app.post('/new-note', routes.views.newNote);
-	
+	app.get('/notes/:tag?', routes.views.notes);
+	app.get('/note/:note', routes.views.note);
 
+	app.get('/signup', routes.views.signup);
+	app.post('/signup', routes.views.signup);
+
+	app.get('/new-note', routes.views.newNote);
+	app.post('/new-note', routes.views.newNote);
+
+	app.get('/update-note/:note', routes.views.updateNote);
+	app.put('/update-note/:note', middleware.checkIdMiddleware, routes.views.updateNote);
+		
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
-
 };

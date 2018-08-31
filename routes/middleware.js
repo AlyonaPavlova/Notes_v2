@@ -8,7 +8,8 @@
  * modules in your project's /lib directory.
  */
 const _ = require('lodash');
-
+const keystone = require('keystone');
+const Note = keystone.list('Note').model;
 
 /**
 	Initialises the standard view locals
@@ -54,4 +55,15 @@ exports.requireUser = function (req, res, next) {
 	} else {
 		next();
 	}
+};
+
+exports.checkIdMiddleware = function (req, res, next) {
+	const noteId = req.params.note.id;
+	Note.findOne({ id: noteId }).exec((err, note) => {
+		if (err) return err;
+		if (req.user === note.author) {
+			return next();
+		}
+		res.redirect('/');
+	})
 };

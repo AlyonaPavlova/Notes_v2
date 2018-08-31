@@ -1,0 +1,26 @@
+extends ../layouts/default
+
+block intro
+	.container
+		h1= 'Edit Note'
+
+block content
+	.container
+		form.contact-form(method="put").row.col-sm-8.col-md-6
+			input(type='hidden', name='action', value='note.update')
+
+			.form-group
+				label Title
+				input.form-control.input-box(type='text', required, name='title', value=note.title)
+			.form-group
+				label Description
+				.row
+					.col-sm-6.col-md-6
+						input.form-control.input-box(type='text', name='brief', value=note.content.brief)
+					.col-sm-6.col-md-6
+						input.form-control.input-box(type='text', required, name='extended', value=note.content.extended)
+			.form-group
+				label Tags
+				input.form-control.input-box(type='text', name='tags', value=tags)
+
+			button(type='submit').btn.btn-success.btn-lg Edit

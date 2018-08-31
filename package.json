@@ -4,14 +4,18 @@
   "private": true,
   "dependencies": {
     "async": "^2.6.1",
+    "chai": "latest",
     "dotenv": "^6.0.0",
     "keystone": "4.0.0-beta.5",
     "keystone-email": "^1.1.0",
     "lodash": "^4.13.1",
+    "mocha": "^5.2.0",
     "mongoose": "^5.2.10",
     "node-sass": "^4.9.3",
     "node-sass-middleware": "^0.11.0",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "superagent": "latest",
+    "supertest": "^3.1.0"
   },
   "devDependencies": {
     "eslint": "^5.4.0",

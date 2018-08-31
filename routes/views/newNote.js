@@ -11,7 +11,7 @@ module.exports = function (req, res) {
 	// Set locals
 	locals.formData = req.body || {};
 	locals.section = 'newNote';
-
+	
 	view.on('post', { action: 'note.create' }, () => {
 		const tagsArr = [];
 		
