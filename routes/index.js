@@ -37,7 +37,7 @@ module.exports = function (app) {
 	app.get('/', routes.views.index);
 	app.get('/signup', routes.views.signup);
 	app.get('/notes/:tag?', routes.views.notes);
-	app.get('/notes/:note', routes.views.note);
+	app.get('/:note', routes.views.note);
 	app.get('/new-note', routes.views.newNote);
 	app.get('/news', routes.views.news);
 	app.get('/features', routes.views.features);

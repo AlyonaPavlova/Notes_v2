@@ -2,7 +2,7 @@ extends ../layouts/default
 
 mixin note(note)
 	.note(data-ks-editable=editable(user, { list: 'Note', id: note.id }))
-		h2: a(href='/notes/' + note.slug)= note.title
+		h2: a(href='/' + note.slug)= note.title
 		p.lead.text-muted Posted 
 			if note.publishedDate
 				| on #{note._.publishedDate.format('MMMM Do, YYYY')} 
@@ -18,7 +18,7 @@ mixin note(note)
 				| by #{note.author.name.first}
 		p!= note.content.brief		
 		if note.content.extended
-			p.read-more: a(href='/notes/' + note.slug) Read more...
+			p.read-more: a(href='/' + note.slug) Read more...
 
 block intro
 	.container
@@ -45,7 +45,7 @@ block content
 							|  notes.
 					else
 						h4.text-weight-normal Showing #{utils.plural(data.notes.results.length, '* note')}.
-					.blog
+					.notes
 						each note in data.notes.results
 							+note(note)
 					

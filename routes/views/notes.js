@@ -9,7 +9,7 @@ module.exports = function (req, res) {
 	// Init locals
 	locals.section = 'notes';
 	locals.filters = {
-		category: req.params.tag,
+		tag: req.params.tag,
 	};
 	locals.data = {
 		notes: [],
@@ -30,7 +30,7 @@ module.exports = function (req, res) {
 			// Load the counts for each tag
 			async.each(locals.data.tags, function (tag, next) {
 
-				keystone.list('Note').model.count().where('tags').in([tag.id]).exec(function (err, count) {
+				keystone.list('Note').model.count().where('state', 'published').where('tags').in([tag.id]).exec(function (err, count) {
 					tag.noteCount = count;
 					next(err);
 				});
