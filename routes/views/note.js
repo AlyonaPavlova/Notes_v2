@@ -1,6 +1,6 @@
 const keystone = require('keystone');
 
-module.exports = function (req, res) {
+module.exports =  async function (req, res) {
 
 	const view = new keystone.View(req, res);
 	const locals = res.locals;
@@ -13,6 +13,16 @@ module.exports = function (req, res) {
 	locals.data = {
 		note: [],
 	};
+	
+	const note = await keystone.list('Note').model.findOne({ slug: req.params.note }).then(note => { return note }).catch(err => { return err });
+	const tags = note.tags;
+	const tagsNames = [];
+
+	for (let i = 0; i < tags.length; i++) {
+		await keystone.list('Tag').model.findById(tags[i]).then(tag => tagsNames.push(tag.name)).catch(err => { return err });
+	}
+	
+	locals.tags = tagsNames.join(', ');
 
 	// Load the current note
 	view.on('init', function (next) {

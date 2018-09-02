@@ -12,7 +12,7 @@ module.exports = function (req, res) {
 	locals.formData = req.body || {};
 	locals.section = 'newNote';
 	
-	view.on('post', { action: 'note.create' }, () => {
+	view.on('post', { action: 'note.create' }, async () => {
 		const tagsArr = [];
 		
 		if (locals.formData.tags) {
@@ -20,17 +20,13 @@ module.exports = function (req, res) {
 
 			for (let i = 0; i < tagsNamesArr.length; i++) {
 				let newTag = new Tag({ name: tagsNamesArr[i] });
-
 				tagsArr.push(newTag);
 
-				Tag.findOne({ name: tagsNamesArr[i] }).exec((err, tag) => {
-					if (err) return err;
-					if (!tag) { newTag.save().catch(err => console.log(err)); }
-				});
+				await Tag.findOne({ name: tagsNamesArr[i] }).then(tag => { if (!tag) newTag.save() }).catch(err => { return err });
 			}
 		}
 
-		const newNote = new Note({
+		await new Note({
 			title: locals.formData.title,
 			author: req.user,
 			publishedDate: new Date(),
@@ -40,9 +36,7 @@ module.exports = function (req, res) {
 			},
 			tags: tagsArr,
 			tagsCount: tagsArr.length,
-		});
-
-		newNote.save().then(() => res.redirect('/notes')).catch(err => console.log(err));
+		}).save().then(() => res.redirect('/notes')).catch(err => { return err });
 	});
 	
 	view.render('newNote');

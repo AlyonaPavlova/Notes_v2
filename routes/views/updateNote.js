@@ -8,59 +8,45 @@ module.exports = async function (req, res) {
 	const view = new keystone.View(req, res);
 	const locals = res.locals;
 
-	// Set locals
 	locals.formData = req.body || {};
 	locals.section = 'updateNote';
 	
-	const note = await Note.findOne({ slug: req.params.note }).exec((err, note) => {
-		if (err) return err;
-		return note;
-	});
-
+	const note = await Note.findOne({ slug: req.params.note }).then(note => { return note }).catch(err => { return err });
 	const tags = note.tags;
 	const tagsNames = [];
 	
 	for (let i = 0; i < tags.length; i++) {
-		await Tag.findOne({ _id: tags[i] }).exec((err, tag) => {
-			if (err) return err;
-			tagsNames.push(tag.name);
-		});
+		await Tag.findById(tags[i]).then(tag => tagsNames.push(tag.name)).catch(err => { return err });
 	}
 
 	locals.note = note;
 	locals.tags = tagsNames.join(', ');
-	console.log('Forward');
 
-	view.on('post', { action: 'note.update' }, () => {
+	view.on('post', { action: 'note.update' }, async () => {
 		const tagsArr = [];
-
+		
 		if (req.body.tags) {
 			const tagsNamesArr = req.body.tags.split(', ');
 
 			for (let i = 0; i < tagsNamesArr.length; i++) {
 				let newTag = new Tag({ name: tagsNamesArr[i] });
-
 				tagsArr.push(newTag);
 
-				Tag.findOne({ name: tagsNamesArr[i] }).exec((err, tag) => {
-					if (err) return err;
-					if (!tag) { newTag.save().catch(err => console.log(err)); }
-				});
+				await Tag.findOne({ name: tagsNamesArr[i] }).then(tag => { if (!tag) newTag.save() }).catch(err => { return err });
 			}
 		}
-		
-		Note.update(
+		await Note.update(
 			{ _id: note.id },
-			{ $set: {title: locals.formData.title,
-				author: req.user,
-				publishedDate: new Date(),
-				content: {
+			{ $set: { title: locals.formData.title,
+					publishedDate: new Date(),
+					content: {
 					brief: locals.formData.brief,
 					extended: locals.formData.extended,
-				},
-				tags: tagsArr,
-				tagsCount: tagsArr.length }}).then(() => res.redirect('/notes')).catch(err => console.log(err));
+					}, 
+					tags: tagsArr,
+					tagsCount: tagsArr.length }
+			}).then(() => res.redirect('/notes')).catch(err => { return err });
 	});
-
+	
 	view.render('updateNote');
 };

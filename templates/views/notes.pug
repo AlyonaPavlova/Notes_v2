@@ -8,8 +8,8 @@ mixin note(note)
 				| on #{note._.publishedDate.format('MMMM Do, YYYY')} 
 			if note.tags && note.tags.length
 				| in 
-				each cat, i in note.tags
-					a(href='/notes/' + cat.key)= cat.name
+				each tag, i in note.tags
+					a(href='/notes/' + tag.key)= tag.name
 					if i < note.tags.length - 1
 						| , 
 					else

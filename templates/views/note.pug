@@ -14,13 +14,7 @@ block content
 						if data.note.publishedDate
 							| on #{data.note._.publishedDate.format('MMMM Do, YYYY')} 
 						if data.note.tags && data.note.tags.length
-							| in 
-							each cat, cat_i in data.note.tags
-								a(href='/notes/' + cat.key)= cat.name
-								if cat_i < data.note.tags.length - 1
-									| , 
-								else
-									|  
+							| in #{tags} 
 						if data.note.author
 							| by #{data.note.author.name.first}
 				

@@ -11,16 +11,16 @@ block content
 
 			.form-group
 				label Title
-				input.form-control.input-box(type='text', required, name='title', value=formData.title)
+				input.form-control.input-box(type='text', required, name='title', value=note.title || formData.title)
 			.form-group
 				label Description
 				.row
 					.col-sm-6.col-md-6
-						input.form-control.input-box(type='text', name='brief', value=formData.brief)
+						input.form-control.input-box(type='text', name='brief', value=note.content.brief || formData.brief)
 					.col-sm-6.col-md-6
-						input.form-control.input-box(type='text', required, name='extended', value=formData.extended)
+						input.form-control.input-box(type='text', required, name='extended', value=note.content.extended || formData.extended)
 			.form-group
 				label Tags
-				input.form-control.input-box(type='text', name='tags', value=formData.tags)
+				input.form-control.input-box(type='text', name='tags', value=tags || formData.tags)
 
 			button(type='submit').btn.btn-success.btn-lg Edit
