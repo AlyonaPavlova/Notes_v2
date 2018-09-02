@@ -6,21 +6,21 @@ block intro
 
 block content
 	.container
-		form.contact-form(method="put").row.col-sm-8.col-md-6
+		form.contact-form(method="post").row.col-sm-8.col-md-6
 			input(type='hidden', name='action', value='note.update')
 
 			.form-group
 				label Title
-				input.form-control.input-box(type='text', required, name='title', value=note.title)
+				input.form-control.input-box(type='text', required, name='title', value=formData.title)
 			.form-group
 				label Description
 				.row
 					.col-sm-6.col-md-6
-						input.form-control.input-box(type='text', name='brief', value=note.content.brief)
+						input.form-control.input-box(type='text', name='brief', value=formData.brief)
 					.col-sm-6.col-md-6
-						input.form-control.input-box(type='text', required, name='extended', value=note.content.extended)
+						input.form-control.input-box(type='text', required, name='extended', value=formData.extended)
 			.form-group
 				label Tags
-				input.form-control.input-box(type='text', name='tags', value=tags)
+				input.form-control.input-box(type='text', name='tags', value=formData.tags)
 
 			button(type='submit').btn.btn-success.btn-lg Edit

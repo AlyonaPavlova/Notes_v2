@@ -29,6 +29,7 @@ module.exports = async function (req, res) {
 
 	locals.note = note;
 	locals.tags = tagsNames.join(', ');
+	console.log('Forward');
 
 	view.on('post', { action: 'note.update' }, () => {
 		const tagsArr = [];
@@ -48,9 +49,9 @@ module.exports = async function (req, res) {
 			}
 		}
 		
-		Note.updateOne(
+		Note.update(
 			{ _id: note.id },
-			{ $set: {title: req.body.title,
+			{ $set: {title: locals.formData.title,
 				author: req.user,
 				publishedDate: new Date(),
 				content: {
@@ -58,7 +59,7 @@ module.exports = async function (req, res) {
 					extended: locals.formData.extended,
 				},
 				tags: tagsArr,
-				tagsCount: tagsArr.length }}).then(() => res.redirect('/')).catch(err => console.log(err));
+				tagsCount: tagsArr.length }}).then(() => res.redirect('/notes')).catch(err => console.log(err));
 	});
 
 	view.render('updateNote');
