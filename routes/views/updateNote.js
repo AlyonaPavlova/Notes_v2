@@ -24,28 +24,65 @@ module.exports = async function (req, res) {
 
 	view.on('post', { action: 'note.update' }, async () => {
 		const tagsArr = [];
+		const oldTagsArr = [];
 		
 		if (req.body.tags) {
 			const tagsNamesArr = req.body.tags.split(', ');
 
 			for (let i = 0; i < tagsNamesArr.length; i++) {
-				let newTag = new Tag({ name: tagsNamesArr[i] });
-				tagsArr.push(newTag);
-
-				await Tag.findOne({ name: tagsNamesArr[i] }).then(tag => { if (!tag) newTag.save() }).catch(err => { return err });
+				await Tag.findOne({ name: tagsNamesArr[i] }).then(async tag => { 
+					if (tag === null) {
+						const newTag = await new Tag({ name: tagsNamesArr[i] }).save().catch(err => { return err });
+						tagsArr.push(newTag);
+					} else {
+						const oldTag = await Tag.findOne({ name: tagsNamesArr[i] }).then(tag => { return tag }).catch(err => { return err });
+						oldTagsArr.push(oldTag);
+					} }).catch(err => { return err });
 			}
 		}
-		await Note.update(
-			{ _id: note.id },
-			{ $set: { title: locals.formData.title,
-					publishedDate: new Date(),
-					content: {
-					brief: locals.formData.brief,
-					extended: locals.formData.extended,
-					}, 
-					tags: tagsArr,
-					tagsCount: tagsArr.length }
-			}).then(() => res.redirect('/notes')).catch(err => { return err });
+		
+		if (tagsArr !== null && oldTagsArr !== null) {
+			const allTags = oldTagsArr.concat(tagsArr);
+			console.log(allTags);
+			await Note.update(
+				{ _id: note.id },
+				{ $set: { title: locals.formData.title,
+						publishedDate: new Date(),
+						content: {
+							brief: locals.formData.brief,
+							extended: locals.formData.extended,
+						},
+						tags: allTags,
+						tagsCount: allTags.length }
+				}).then(() => res.redirect('/notes')).catch(err => { return err });
+		}
+
+		if (tagsArr !== null && oldTagsArr === null) {
+			await Note.update(
+				{ _id: note.id },
+				{ $set: { title: locals.formData.title,
+						publishedDate: new Date(),
+						content: {
+							brief: locals.formData.brief,
+							extended: locals.formData.extended,
+						},
+						tags: tagsArr,
+						tagsCount: tagsArr.length }
+				}).then(() => res.redirect('/notes')).catch(err => { return err });
+		}
+
+		if (tagsArr === null && oldTagsArr !== null) {
+			await Note.update(
+				{ _id: note.id },
+				{ $set: { title: locals.formData.title,
+						publishedDate: new Date(),
+						content: {
+							brief: locals.formData.brief,
+							extended: locals.formData.extended,
+						} }
+				}).then(() => res.redirect('/notes')).catch(err => { return err });
+		}
+		
 	});
 	
 	view.render('updateNote');
