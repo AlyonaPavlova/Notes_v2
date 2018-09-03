@@ -19,10 +19,15 @@ module.exports = function (req, res) {
 			const tagsNamesArr = locals.formData.tags.split(', ');
 
 			for (let i = 0; i < tagsNamesArr.length; i++) {
-				let newTag = new Tag({ name: tagsNamesArr[i] });
-				tagsArr.push(newTag);
-
-				await Tag.findOne({ name: tagsNamesArr[i] }).then(tag => { if (!tag) newTag.save() }).catch(err => { return err });
+				await Tag.findOne({ name: tagsNamesArr[i] }).then(async tag => { 
+					if (tag === null) {
+						let newTag = await new Tag({ name: tagsNamesArr[i] }).save().catch(err => { return err });
+						tagsArr.push(newTag);
+					} else {
+						const oldTag = await Tag.findOne({ name: tagsNamesArr[i] }).then(tag => { return tag }).catch(err => { return err });
+						tagsArr.push(oldTag);
+					}
+				}).catch(err => { return err });
 			}
 		}
 

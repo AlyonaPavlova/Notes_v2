@@ -41,23 +41,7 @@ module.exports = async function (req, res) {
 			}
 		}
 		
-		if (tagsArr !== null && oldTagsArr !== null) {
-			const allTags = oldTagsArr.concat(tagsArr);
-			console.log(allTags);
-			await Note.update(
-				{ _id: note.id },
-				{ $set: { title: locals.formData.title,
-						publishedDate: new Date(),
-						content: {
-							brief: locals.formData.brief,
-							extended: locals.formData.extended,
-						},
-						tags: allTags,
-						tagsCount: allTags.length }
-				}).then(() => res.redirect('/notes')).catch(err => { return err });
-		}
-
-		if (tagsArr !== null && oldTagsArr === null) {
+		async function noteUpdate(tagsArr) {
 			await Note.update(
 				{ _id: note.id },
 				{ $set: { title: locals.formData.title,
@@ -70,8 +54,17 @@ module.exports = async function (req, res) {
 						tagsCount: tagsArr.length }
 				}).then(() => res.redirect('/notes')).catch(err => { return err });
 		}
+		
+		if (tagsArr && oldTagsArr) {
+			const allTags = oldTagsArr.concat(tagsArr);
+			await noteUpdate(allTags);
+		}
 
-		if (tagsArr === null && oldTagsArr !== null) {
+		if (tagsArr && !oldTagsArr) {
+			await noteUpdate(tagsArr);
+		}
+
+		if (!tagsArr && oldTagsArr) {
 			await Note.update(
 				{ _id: note.id },
 				{ $set: { title: locals.formData.title,
