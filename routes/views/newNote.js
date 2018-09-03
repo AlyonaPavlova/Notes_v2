@@ -2,6 +2,7 @@ const keystone = require('keystone');
 
 const Note = keystone.list('Note').model;
 const Tag = keystone.list('Tag').model;
+const statistics = require('./statistics');
 
 module.exports = function (req, res) {
 
@@ -41,7 +42,10 @@ module.exports = function (req, res) {
 			},
 			tags: tagsArr,
 			tagsCount: tagsArr.length,
-		}).save().then(() => res.redirect('/notes')).catch(err => { return err });
+		}).save().then(async () => {
+			await statistics.getUniqueTags();
+			res.redirect('/notes')
+		}).catch(err => { return err });
 	});
 	
 	view.render('newNote');

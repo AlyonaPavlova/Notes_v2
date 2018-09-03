@@ -1,6 +1,7 @@
 const keystone = require('keystone');
 
 const User = keystone.list('User').model;
+const Statistic = keystone.list('Statistic').model;
 
 module.exports = function (req, res) {
 
@@ -11,8 +12,8 @@ module.exports = function (req, res) {
 	locals.formData = req.body || {};
 	locals.section = 'signup';
 
-	view.on('post', { action: 'user.create' }, function () {
-		const newUser = new User({
+	view.on('post', { action: 'user.create' }, async () => {
+		await new User({
 			name: {
 				first: locals.formData.first,
 				last: locals.formData.last,
@@ -21,9 +22,19 @@ module.exports = function (req, res) {
 			password: locals.formData.password,
 			phone: locals.formData.phone,
 			birthDate: locals.formData.birthDate,
-		});
-
-		newUser.save().then(() => res.redirect('/')).catch(err => console.log(err));
+		}).save().then(async newUser => {
+			await new Statistic({
+				user: newUser,
+				uniqueTags: [],
+				lastTenNotes: [],
+				likesCount: 0,
+				rating: 0,
+				ratingByLastTenNotes: 0,
+				coefficientOfActivity: 0,
+			}).save().catch(err => { return err });
+			
+			res.redirect('/keystone/signin')
+		}).catch(err => { return err });
 	});
 
 	view.render('signup');
