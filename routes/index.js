@@ -21,6 +21,7 @@
 const keystone = require('keystone');
 const middleware = require('./middleware');
 const importRoutes = keystone.importer(__dirname);
+const noteState = require('./views/noteState');
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -48,7 +49,10 @@ module.exports = function (app) {
 
 	app.get('/update-note/:note', middleware.checkIdMiddleware, routes.views.updateNote);
 	app.post('/update-note/:note', routes.views.updateNote);
-		
+
+	app.post('/note/:note/state', noteState);
+
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };

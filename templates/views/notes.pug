@@ -19,7 +19,13 @@ mixin note(note)
 		p!= note.content.brief		
 		if note.content.extended
 			p.read-more: a(href='/note/' + note.slug) Read more...
-		a(type='button' href='/update-note/' + note.slug).btn Edit Note
+		.row
+			a(type='button' href='/update-note/' + note.slug).btn.col-md-1 Edit Note
+			form(method="post" action='/note/' + note.slug + '/state').row.col-md-2.col-md-offset-8
+				button(type="submit" name="false").col-md-6.btn.btn-link.icon-align.text-danger 
+					i.fa.fa-thumbs-down.fa-lg
+				button(type="submit" name="true").col-md-6.btn.btn-link.icon-align.text-success 
+					i.fa.fa-thumbs-up.fa-lg
 
 block intro
 	.container
