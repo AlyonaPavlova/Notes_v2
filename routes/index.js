@@ -23,7 +23,6 @@ const middleware = require('./middleware');
 const importRoutes = keystone.importer(__dirname);
 
 const noteState = require('./views/noteState');
-const statistics = require('./views/statistics');
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -54,12 +53,7 @@ module.exports = function (app) {
 
 	app.post('/note/:note/state', noteState);
 	
-	app.get('/statistics', async function(req, res) {
-		const Statistic = keystone.list('Statistic').model;
-
-		const rating = await Statistic.find().sort('-likesCount').limit(100).then(list => { return list }).catch(err => { return err });
-		res.send(rating);
-	});
+	app.get('/statistics', routes.views.getStatistics);
 
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:

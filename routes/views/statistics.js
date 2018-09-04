@@ -1,5 +1,6 @@
 const keystone = require('keystone');
 
+const User = keystone.list('User').model;
 const Note = keystone.list('Note').model;
 const Tag = keystone.list('Tag').model;
 const Like = keystone.list('Like').model;
@@ -36,7 +37,6 @@ exports.getUniqueTags = async function (user) {
 	}
 	
 	await Statistic.update({ user: user._id }, { $set: { uniqueTags:  uniqueTags} }).catch(err => { return err });
-	// console.log(uniqueTagsNames.join(', '));
 };
 
 exports.getLastTenNotes = async function (user) {
@@ -54,7 +54,6 @@ exports.getLikesCount = async function (userId) {
 		if (record !== null) likesCount++
 	}
 	await Statistic.update({ user: userId }, { $set: { likesCount:  likesCount} }).catch(err => { return err });
-	// console.log(likesCount.toString());
 };
 
 exports.getRating = async function (userId) {
@@ -86,5 +85,18 @@ exports.getRatingByLastTenNotes = async function (userId) {
 			await Statistic.update({ user: userId }, { $set: { ratingByLastTenNotes: i + 1 } }).catch(err => { return err });
 		}
 	});
+};
+
+exports.coefficientOfActivity = async function (userId) {
+	const regDate = await User.findById(userId).then(user => { return user.regDate }).catch(err => { return err });
+	const currentDate = new Date();
+	currentDate.setDate(currentDate.getDate() + 3);
+	const different = (currentDate - regDate) / 1000 / 60 / 60 / 24;
+
+	const notes = await Note.count({ author: userId }).then(notes => { return notes }).catch(err => { return err });
+	const number = (different / notes) * (1/10);
+	const coefficient = +number.toFixed(2);
+
+	await Statistic.update({ user: userId }, { $set: { coefficientOfActivity: coefficient } }).catch(err => { return err });
 };
 

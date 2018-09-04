@@ -45,6 +45,7 @@ module.exports = function (req, res) {
 		}).save().then(async () => {
 			await statistics.getUniqueTags(req.user);
 			await statistics.getLastTenNotes(req.user);
+			await statistics.coefficientOfActivity(req.user._id);
 			res.redirect('/notes')
 		}).catch(err => { return err });
 	});

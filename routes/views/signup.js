@@ -21,6 +21,7 @@ module.exports = function (req, res) {
 			email: locals.formData.email,
 			password: locals.formData.password,
 			phone: locals.formData.phone,
+			regDate: new Date(),
 			birthDate: locals.formData.birthDate,
 		}).save().then(async newUser => {
 			await new Statistic({
