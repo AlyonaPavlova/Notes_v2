@@ -30,7 +30,7 @@ module.exports =  async function (req, res) {
 		const q = keystone.list('Note').model.findOne({
 			state: 'published',
 			slug: locals.filters.note,
-		}).populate('author categories');
+		}).populate('author tags');
 
 		q.exec(function (err, result) {
 			locals.data.note = result;

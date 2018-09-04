@@ -28,6 +28,7 @@ module.exports = function (req, res) {
 				uniqueTags: [],
 				lastTenNotes: [],
 				likesCount: 0,
+				likesCountByTenNotes: 0,
 				rating: 0,
 				ratingByLastTenNotes: 0,
 				coefficientOfActivity: 0,

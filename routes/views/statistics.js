@@ -5,8 +5,8 @@ const Tag = keystone.list('Tag').model;
 const Like = keystone.list('Like').model;
 const Statistic = keystone.list('Statistic').model;
 
-exports.getUniqueTags = async function (req, res) {
-	const notes = await Note.find({ author: req.user }).then(notes => { return notes }).catch(err => { return err });
+exports.getUniqueTags = async function (user) {
+	const notes = await Note.find({ author: user._id }).then(notes => { return notes }).catch(err => { return err });
 	const allTags = [];
 	const tagsNames = [];
 	const obj = {};
@@ -34,24 +34,57 @@ exports.getUniqueTags = async function (req, res) {
 		let tag = await Tag.findOne({ name: uniqueTagsNames[i] }).then(tag => { return tag }).catch(err => { return err });
 		uniqueTags.push(tag);
 	}
-	await Statistic.update({ user: req.user }, { $set: { uniqueTags:  uniqueTags} }).catch(err => { return err });
-	res.send(uniqueTagsNames.join(', '));
+	
+	await Statistic.update({ user: user._id }, { $set: { uniqueTags:  uniqueTags} }).catch(err => { return err });
+	// console.log(uniqueTagsNames.join(', '));
 };
 
-exports.getLastTenNotes = async function (req, res) {
-	const lastTenNotes = await Note.find({ author: req.user }).sort({'date': -1}).limit(10).then(notes => { return notes }).catch(err => { return err });
-	res.send(lastTenNotes);
+exports.getLastTenNotes = async function (user) {
+	const lastTenNotes = await Note.find({ author: user._id }).sort({'date': -1}).limit(10).then(notes => { return notes }).catch(err => { return err });
+	
+	await Statistic.update({ user: user._id }, { $set: { lastTenNotes:  lastTenNotes} }).catch(err => { return err });
 };
 
-exports.getLikesCount = async function (req, res) {
+exports.getLikesCount = async function (userId) {
+	const notes = await Note.find({ author: userId }).then(notes => { return notes }).catch(err => { return err });
 	let likesCount = 0;
+	
 	for (let i = 0; i < notes.length; i++) {
 		let record = await Like.findOne({ note: notes[i]._id, state: true }).then(record => { return record }).catch(err => { return err });
 		if (record !== null) likesCount++
 	}
-	res.send(likesCount.toString());
+	await Statistic.update({ user: userId }, { $set: { likesCount:  likesCount} }).catch(err => { return err });
+	// console.log(likesCount.toString());
 };
 
-exports.getRating = async function (req, res) {
-	
+exports.getRating = async function (userId) {
+	const usersArr = await Statistic.find().sort('-likesCount').limit(100).then(list => { return list }).catch(err => { return err });
+
+	usersArr.forEach(async (user, i) => {
+		if (JSON.stringify(user.user) === JSON.stringify(userId)) {
+			await Statistic.update({ user: userId }, { $set: { rating: i + 1 } }).catch(err => { return err });
+		}
+	}); 
 };
+
+exports.getLikesCountByTenNotes = async function (userId) {
+	const lastTenNotes = await Note.find({ author: userId }).sort('-publishedDate').limit(10).then(notes => { return notes }).catch(err => { return err });
+	let likesCount = 0;
+
+	for (let i = 0; i < lastTenNotes.length; i++) {
+		let record = await Like.findOne({ note: lastTenNotes[i]._id, state: true }).then(record => { return record }).catch(err => { return err });
+		if (record !== null) likesCount++
+	}
+	await Statistic.update({ user: userId }, { $set: { likesCountByTenNotes:  likesCount} }).catch(err => { return err });
+};
+
+exports.getRatingByLastTenNotes = async function (userId) {
+	const usersArr = await Statistic.find().sort('-likesCountByTenNotes').limit(100).then(list => { return list }).catch(err => { return err });
+	
+	usersArr.forEach(async (user, i) => {
+		if (JSON.stringify(user.user) === JSON.stringify(userId)) {
+			await Statistic.update({ user: userId }, { $set: { ratingByLastTenNotes: i + 1 } }).catch(err => { return err });
+		}
+	});
+};
+

@@ -43,7 +43,8 @@ module.exports = function (req, res) {
 			tags: tagsArr,
 			tagsCount: tagsArr.length,
 		}).save().then(async () => {
-			await statistics.getUniqueTags();
+			await statistics.getUniqueTags(req.user);
+			await statistics.getLastTenNotes(req.user);
 			res.redirect('/notes')
 		}).catch(err => { return err });
 	});
