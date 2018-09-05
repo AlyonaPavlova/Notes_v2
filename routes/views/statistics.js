@@ -90,7 +90,6 @@ exports.getRatingByLastTenNotes = async function (userId) {
 exports.coefficientOfActivity = async function (userId) {
 	const regDate = await User.findById(userId).then(user => { return user.regDate }).catch(err => { return err });
 	const currentDate = new Date();
-	currentDate.setDate(currentDate.getDate() + 3);
 	const different = (currentDate - regDate) / 1000 / 60 / 60 / 24;
 
 	const notes = await Note.count({ author: userId }).then(notes => { return notes }).catch(err => { return err });

@@ -75,7 +75,6 @@ module.exports = async function (req, res) {
 						} }
 				}).then(() => res.redirect('/notes')).catch(err => { return err });
 		}
-		
 	});
 	
 	view.render('updateNote');

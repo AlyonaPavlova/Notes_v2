@@ -4,11 +4,11 @@ const Statistic = keystone.list('Statistic').model;
 const Note = keystone.list('Note').model;
 const Tag = keystone.list('Tag').model;
 
-module.exports = function (req, res) {
+module.exports = async function (req, res) {
 	const view = new keystone.View(req, res);
 	const locals = res.locals;
 	
-	view.on('init', async function (next) {
+	view.on('init', async next => {
 		locals.firstName = req.user.name.first;
 		locals.lastName = req.user.name.last;
 

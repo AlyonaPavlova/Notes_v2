@@ -3,7 +3,7 @@ const keystone = require('keystone');
 const User = keystone.list('User').model;
 const Statistic = keystone.list('Statistic').model;
 
-module.exports = function (req, res) {
+module.exports = async function (req, res) {
 
 	const view = new keystone.View(req, res);
 	const locals = res.locals;

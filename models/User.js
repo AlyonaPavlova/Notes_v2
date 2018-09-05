@@ -28,15 +28,9 @@ User.schema.virtual('canAccessKeystone').get(function () {
 
 User.relationship({ ref: 'Note', path: 'notes', refPath: 'author' });
 
-User.schema.methods.wasActive = function () {
-	this.lastActiveOn = new Date();
-	return this;
-};
-
 /**
  * Registration
  */
 
-User.track = true;
 User.defaultColumns = 'name, email, isAdmin';
 User.register();

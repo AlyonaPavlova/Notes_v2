@@ -24,17 +24,5 @@ module.exports =  async function (req, res) {
 		next();
 	});
 
-	// Load other notes
-	// view.on('init', function (next) {
-	//
-	// 	const q = keystone.list('Note').model.find().where('state', 'published').sort('-publishedDate').populate('author').limit(10);
-	//
-	// 	q.exec(function (err, results) {
-	// 		locals.data.notes = results;
-	// 		next(err);
-	// 	});
-	//
-	// });
-
 	view.render('note');
 };

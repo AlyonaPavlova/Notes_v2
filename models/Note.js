@@ -27,6 +27,5 @@ Note.schema.virtual('content.full').get(function () {
 	return this.content.extended || this.content.brief;
 });
 
-Note.track = true;
 Note.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
 Note.register();

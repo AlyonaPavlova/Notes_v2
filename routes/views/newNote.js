@@ -4,7 +4,7 @@ const Note = keystone.list('Note').model;
 const Tag = keystone.list('Tag').model;
 const statistics = require('./statistics');
 
-module.exports = function (req, res) {
+module.exports = async function (req, res) {
 
 	const view = new keystone.View(req, res);
 	const locals = res.locals;
