@@ -1,7 +1,7 @@
 extends ../layouts/default
 
 block content
-	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+	.container: .row: .col-sm-10.col-md-8
 		article
 			p: a(href='/notes') &larr; back to the notes
 			hr
@@ -10,13 +10,11 @@ block content
 			else
 				header
 					h1= data.note.title
+					h4(style='margin: 30px 0 20px 0')=data.note.content.full
 					h5 Posted 
 						if data.note.publishedDate
 							| on #{data.note._.publishedDate.format('MMMM Do, YYYY')} 
-						if data.note.tags && data.note.tags.length
+						if data.note.tags
 							| in #{tags} 
 						if data.note.author
 							| by #{data.note.author.name.first}
-				
-				.note
-					!= data.note.content.full
