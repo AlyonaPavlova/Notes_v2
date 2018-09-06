@@ -58,7 +58,7 @@ exports.requireUser = function (req, res, next) {
 };
 
 exports.checkIdMiddleware = async function (req, res, next) {
-	const note = await Note.findOne({ slug: req.params.note }).then(note => { return note }).catch(err => { return err });
+	const note = await Note.findOne({ slug: req.params.note });
 	
 	if (req.user !== undefined) {
 		await Note.findOne({ _id: note._id }).then(note => {
@@ -66,7 +66,7 @@ exports.checkIdMiddleware = async function (req, res, next) {
 				return next();
 			}
 			res.send('You are not the author of this note, so you don\'t have permission to edit it.');
-		}).catch(err => { return err });
+		}).catch(err => { next(err) });
 	} else {
 		res.redirect('/signup');
 	}

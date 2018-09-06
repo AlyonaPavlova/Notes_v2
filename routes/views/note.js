@@ -11,16 +11,9 @@ module.exports =  async function (req, res) {
 	
 	// Load the current note
 	view.on('init', async (next) => {
-		const note = await Note.findOne({ slug: req.params.note }).populate('author').then(note => { return note }).catch(err => { return err });
-		const tags = note.tags;
-		const tagsNames = [];
-
-		for (let i = 0; i < tags.length; i++) {
-			await Tag.findById(tags[i]).then(tag => tagsNames.push(tag.name)).catch(err => { return err });
-		}
+		const note = await Note.findOne({ slug: req.params.note }).populate('author tags');
 
 		locals.data = { note: note };
-		locals.tags = tagsNames.join(', ');
 		next();
 	});
 

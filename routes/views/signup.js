@@ -4,15 +4,13 @@ const User = keystone.list('User').model;
 const Statistic = keystone.list('Statistic').model;
 
 module.exports = async function (req, res) {
-
 	const view = new keystone.View(req, res);
 	const locals = res.locals;
 
-	// Set locals
 	locals.formData = req.body || {};
 	locals.section = 'signup';
 
-	view.on('post', { action: 'user.create' }, async () => {
+	view.on('post', { action: 'user.create' }, async next => {
 		await new User({
 			name: {
 				first: locals.formData.first,
@@ -33,10 +31,10 @@ module.exports = async function (req, res) {
 				rating: 0,
 				ratingByLastTenNotes: 0,
 				coefficientOfActivity: 0,
-			}).save().catch(err => { return err });
+			}).save();
 			
 			res.redirect('/keystone/signin')
-		}).catch(err => { return err });
+		}).catch(err => next(err));
 	});
 
 	view.render('signup');
