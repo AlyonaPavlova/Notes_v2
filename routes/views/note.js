@@ -1,3 +1,5 @@
+'use strict';
+
 const keystone = require('keystone');
 
 const Note = keystone.list('Note').model;

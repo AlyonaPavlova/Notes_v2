@@ -38,20 +38,21 @@ module.exports = function (app) {
 	app.get('/', routes.views.index);
 	app.get('/news', routes.views.news);
 	app.get('/features', routes.views.features);
-	
-	app.get('/notes/:tag?', routes.views.notes);
-	app.get('/note/:note', routes.views.note);
 
 	app.get('/signup', routes.views.signup);
 	app.post('/signup', routes.views.signup);
+	
+	app.get('/notes', routes.views.notes);
+	
+	app.get('/notes/new', routes.views.newNote);
+	app.post('/notes/new', routes.views.newNote);
 
-	app.get('/new-note', routes.views.newNote);
-	app.post('/new-note', routes.views.newNote);
+	app.get('/notes/:note', routes.views.note);
 
-	app.get('/update-note/:note', middleware.checkIdMiddleware, routes.views.updateNote);
-	app.post('/update-note/:note', routes.views.updateNote);
+	app.get('/notes/:note/update', middleware.checkIdMiddleware, routes.views.updateNote);
+	app.post('/notes/:note/update', routes.views.updateNote);
 
-	app.post('/note/:note/state', noteState);
+	app.post('/notes/:note/state', noteState);
 	
 	app.get('/statistics', routes.views.getStatistics);
 };
