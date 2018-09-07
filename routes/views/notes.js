@@ -1,3 +1,5 @@
+'use strict';
+
 const keystone = require('keystone');
 const async = require('async');
 
@@ -9,7 +11,7 @@ module.exports = async function (req, res) {
 	const locals = res.locals;
 
 	locals.section = 'notes';
-	locals.filters = { tag: req.params.tag };
+	locals.filters = { tag: req.query.filter };
 	locals.data = {
 		notes: [],
 		tags: [],
@@ -30,7 +32,7 @@ module.exports = async function (req, res) {
 
 	// Load the current tag filter
 	view.on('init', async next => {
-		req.params.tag ? await Tag.findOne({ key: locals.filters.tag }).exec((err, result) => { locals.data.tag = result; next(err) }) : next();
+		req.query.filter ? await Tag.findOne({ key: locals.filters.tag }).exec((err, result) => { locals.data.tag = result; next(err) }) : next();
 	});
 
 	// Load the notes

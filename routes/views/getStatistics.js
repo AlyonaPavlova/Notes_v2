@@ -1,3 +1,5 @@
+'use strict';
+
 const keystone = require('keystone');
 
 const Statistic = keystone.list('Statistic').model;

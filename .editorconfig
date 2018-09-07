@@ -12,3 +12,8 @@ indent_style = tab
 [{*.yml,*.json}]
 indent_style = space
 indent_size = 2
+
+# Pug (Jade)
+[*.{jade,pug}]
+indent_size = 2
+indent_style = space
