@@ -36,44 +36,38 @@ exports.getLikesCount = async function (userId, act) {
 	await Statistic.update({ user: userId }, { $inc: { likesCount: act} }).catch(err => { return err });
 };
 
-exports.newLikesCount = async function (userId) {
-	const notes = await Note.find({ author: userId });
-	let likesCount = 0;
-
-	for (let i = 0; i < notes.length; i++) {
-		let record = await Like.findOne({ note: notes[i]._id, state: true });
-		if (record !== null) likesCount++
-	}
-	await Statistic.update({ user: userId }, { $set: { likesCount:  likesCount} }).catch(err => { return err });
+exports.getLikesCountByTenNotes = async function (userId, act) {
+	await Statistic.update({ user: userId }, { $inc: { likesCountByTenNotes: act} }).catch(err => { return err });
 };
 
 exports.getRating = async function (userId) {
-	const usersArr = await Statistic.find().sort('-likesCount').limit(100).then(list => { return list }).catch(err => { return err });
+	const usersArr = await Statistic.find().sort('-likesCount');
+	const maxLikes = usersArr[0].likesCount;
 
-	usersArr.forEach(async (user, i) => {
+	usersArr.forEach(async user => {
+		let rating = (user.likesCount * 100) / maxLikes;
+		
 		if (JSON.stringify(user.user) === JSON.stringify(userId)) {
-			await Statistic.update({ user: userId }, { $set: { rating: i + 1 } }).catch(err => { return err });
+			await Statistic.findOne({ user: userId }).then(user => {
+				user.rating = rating;
+				user.save();
+			}).catch(err => { return err });
 		}
-	}); 
-};
-
-exports.getLikesCountByTenNotes = async function (userId) {
-	const lastTenNotes = await Note.find({ author: userId }).sort('-publishedDate').limit(10).then(notes => { return notes }).catch(err => { return err });
-	let likesCount = 0;
-
-	for (let i = 0; i < lastTenNotes.length; i++) {
-		let record = await Like.findOne({ note: lastTenNotes[i]._id, state: true }).then(record => { return record }).catch(err => { return err });
-		if (record !== null) likesCount++
-	}
-	await Statistic.update({ user: userId }, { $set: { likesCountByTenNotes:  likesCount} }).catch(err => { return err });
+	});
 };
 
 exports.getRatingByLastTenNotes = async function (userId) {
-	const usersArr = await Statistic.find().sort('-likesCountByTenNotes').limit(100).then(list => { return list }).catch(err => { return err });
+	const usersArr = await Statistic.find().sort('-likesCountByTenNotes');
+	const maxLikes = usersArr[0].likesCount;
 	
-	usersArr.forEach(async (user, i) => {
+	usersArr.forEach(async user => {
+		let rating = (user.likesCount * 100) / maxLikes;
+
 		if (JSON.stringify(user.user) === JSON.stringify(userId)) {
-			await Statistic.update({ user: userId }, { $set: { ratingByLastTenNotes: i + 1 } }).catch(err => { return err });
+			await Statistic.findOne({ user: userId }).then(user => {
+				user.ratingByLastTenNotes = rating;
+				user.save();
+			}).catch(err => { return err });
 		}
 	});
 };
