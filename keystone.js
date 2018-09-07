@@ -10,8 +10,8 @@ const keystone = require('keystone');
 // and documentation.
 
 keystone.init({
-	'name': 'Notes_v2',
-	'brand': 'Notes_v2',
+	'name': 'Notes',
+	'brand': 'Notes',
 
 	'sass': 'public',
 	'static': 'public',
@@ -20,7 +20,7 @@ keystone.init({
 	'view engine': 'pug',
 
 	'emails': 'templates/emails',
-	'mongo': process.env.MONGO_URL,
+	'mongodb': process.env.MONGO_URL,
 
 	'auto update': true,
 	'session': true,

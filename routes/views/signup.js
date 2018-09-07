@@ -1,7 +1,8 @@
 const keystone = require('keystone');
+
 const User = keystone.list('User').model;
 
-exports = module.exports = function (req, res) {
+module.exports = function (req, res) {
 
 	const view = new keystone.View(req, res);
 	const locals = res.locals;
@@ -22,15 +23,8 @@ exports = module.exports = function (req, res) {
 			birthDate: locals.formData.birthDate,
 		});
 
-		newUser.save(function (err) {
-			if (err) {
-				return console.log(err);
-			} else {
-				return res.redirect('/');
-			}
-		});
+		newUser.save().then(() => res.redirect('/')).catch(err => console.log(err));
 	});
 
-	// Render the view
 	view.render('signup');
 };

@@ -8,7 +8,8 @@
  * modules in your project's /lib directory.
  */
 const _ = require('lodash');
-
+const keystone = require('keystone');
+const Note = keystone.list('Note').model;
 
 /**
 	Initialises the standard view locals
@@ -53,5 +54,20 @@ exports.requireUser = function (req, res, next) {
 		res.redirect('/keystone/signin');
 	} else {
 		next();
+	}
+};
+
+exports.checkIdMiddleware = async function (req, res, next) {
+	const note = await Note.findOne({ slug: req.params.note }).then(note => { return note }).catch(err => { return err });
+	
+	if (req.user !== undefined) {
+		await Note.findOne({ _id: note._id }).then(note => {
+			if (req.user._id.toString() === note.author.toString()) {
+				return next();
+			}
+			res.send('You are not the author of this note, so you don\'t have permission to edit it.');
+		}).catch(err => { return err });
+	} else {
+		res.redirect('/signup');
 	}
 };

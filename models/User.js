@@ -16,7 +16,6 @@ User.add({
 	phone: { type: String, width: 'short' },
 	regDate: { type: Types.Date },
 	birthDate: { type: Types.Date, initial: true },
-	// photo: { type: Types.CloudinaryImage, collapse: true },
 	notesCount: { type: Types.Number },
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },

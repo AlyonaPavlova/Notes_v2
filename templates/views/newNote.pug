@@ -1,0 +1,26 @@
+extends ../layouts/default
+
+block intro
+	.container
+		h1= 'New Note'
+
+block content
+	.container
+			form.contact-form(method="post").row.col-sm-8.col-md-6
+				input(type='hidden', name='action', value='note.create')
+
+				.form-group
+					label Title
+					input.form-control.input-box(type='text', required, name='title', value=formData.title, placeholder='Title')
+				.form-group
+					label Description
+					.row
+						.col-sm-6.col-md-6
+							input.form-control.input-box(type='text', name='brief', value=formData.brief, placeholder='Brief Description')
+						.col-sm-6.col-md-6
+							input.form-control.input-box(type='text', required, name='extended', value=formData.extended, placeholder='Extended Description')
+				.form-group
+					label Tags
+					input.form-control.input-box(type='text', name='tags', value=formData.tags, placeholder='tag1, tag2, tag3')
+
+				button(type='submit').btn.btn-success.btn-lg Create

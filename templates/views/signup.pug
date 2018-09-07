@@ -7,7 +7,7 @@ block intro
 block content
 	.container
 		if user
-			p You are already logged in.
+			p You're already logged in.
 		else
 
 			form.contact-form(method="post").row.col-sm-8.col-md-6
@@ -15,7 +15,6 @@ block content
 
 				.form-group
 					label Name
-
 					.row
 						.col-sm-6.col-md-6
 							input.form-control.input-box(type='text', required, name='first', value=formData.first, placeholder='First Name')
